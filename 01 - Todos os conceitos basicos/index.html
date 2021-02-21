@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todos os conceitos basicos de JS</title>
+</head>
+<body>
+    
+    <div id="app">
+
+        
+
+        <ul>
+            <li >Caique</li>
+            <li>Bianca</li>
+            <li>Julia</li>
+            <li>Marcos</li>
+            <li>Magda</li>
+            <li id="teste"></li>
+        </ul>
+    </div>
+
+
+
+    <script>
+     /*
+        JavaScript fica aqui, andes de fechar a tag bady, pois é a ultima coisa 
+        a ser carregado. Ou seja, todo html ja estará renderizado
+        dentro da tag script é colocado e ou linkado  
+    */
+
+    //--------------------------------------------------------------------------
+    //#01 - Formar de saídas (exibir algo em tela, documento ou console )
+    //--------------------------------------------------------------------------
+    
+        //Exibindo algo dentro do documento (pagina web , depois da barra de link em diante)
+        document.getElementById("teste").innerHtml = 'teste exibir mensagem dentro do documento tag';
+        
+        //Exibindo algo dentro da janela do navegador (toda a area da pagina)
+        window.alert(" Exemplo na janela");
+
+        //Exibindo algo apenas na console (Mensagens / notificações que só serão exibidos na console da aplicação para os desenvolvedores)
+        console.log ("Exemplo saida na console");  
+
+  
+    
+    //--------------------------------------------------------------------------
+    //#02 - Formar de declarar variaveis e seus escopos 
+    //--------------------------------------------------------------------------
+    
+        // Usando var - escopo global e tipagem dinamica
+        /* 
+            Obs: evitar usar pois ele pode ser redelarada e quando isso acontece ela
+            pode passar a referenciar uma coisa totalmente diferente, por isso deve ser evitada
+
+            abaixo ela nasceu como string e depois virou um array 
+        */ 
+        var nome0 = "Caique";		
+        var nome0 = ["Pamela", "Julia"]
+
+
+
+        // Usando const - escopo global e tipagem fixa, ou seja, não pode ser redeclarada com outro tipo
+        // seu valor pode mudar, mas seu tipo não
+        const nome1 = "Valeria";
+
+        // Usando let - escopo contido, ou seja, vale apenas para o escopo da classe, metodo, loop que foi declarada 
+        // possui tipagem fixa idem a const
+        
+
+        function exibirNome(x){
+            let nome2 = x;
+            console.log ("uso let(correto): "+ nome2);
+
+        }
+
+
+        console.log ("uso var: "+ nome0);
+        console.log ("uso const: "+ nome1);
+        exibirNome("Amanda");
+        //console.log ("uso let(incorreto): "+ nome2); //> comentado se não quebra o codigo
+
+
+    //--------------------------------------------------------------------------
+    //#03 - tipos de variaveis
+    //--------------------------------------------------------------------------
+        /*
+            Notas o JavaScript não é fortemente tipado 
+        */
+        
+        // String
+        var nome99    = "Wesley";
+
+        // int
+        var idade0   = 26.;
+
+        // float
+        var peso    = 71.3;
+
+        // bolean
+        var humano  =true;
+
+        // array ou vetor - indexa a partir de 0
+        var alunos = ['Caique' , 'Patricia' , 'Thiago'];
+
+        // objeto (json - javaScript object notation)
+        var aluno = {
+            nome: 'Patricia',
+            idade: 26,
+            peso:  71.3,
+            humano: true
+
+        };
+
+        console.log(nome99);
+        console.log(idade0);
+        console.log(peso);        
+        console.log(humano);
+        console.log(alunos);
+
+    //--------------------------------------------------------------------------
+    //#04 - Operacoes matematicas
+    //--------------------------------------------------------------------------
+
+        var x=10;
+        var y=2;
+
+        var result=0;
+
+        //soma 
+        result= x + y;
+        console.log('Soma de x + y = '+result);
+
+        // subtracao
+        result= x - y;
+        console.log('Subtracao de x - y = '+result);   
+
+        // multiplicação
+        result= x * y;
+        console.log('Multiplicação de x * y = '+result);          
+
+        
+        // Divisão
+        result = x/y;
+        console.log('divisao de x/y = '+result);           
+        
+
+        // mod ou resto da divisão
+        result = x % y;
+        console.log('Resto da divisao divisao de x/y = '+result);  
+
+        if (result === 0){
+            console.log('X no valor de ' + x +' eh Par !');
+        } else {
+            console.log('X no valor de ' + x +' eh impar !');
+        };
+
+        
+        // incremento e decremento 
+        x +=x;
+        console.log('x = x + x= '+ x);
+
+        x++;
+        console.log('x++ = '+ x);
+
+        x--;
+        console.log('x-- = '+ x);
+
+
+    //--------------------------------------------------------------------------
+    //#05 - Condicionais e operadores logicos 
+    //--------------------------------------------------------------------------
+
+        /*        
+            Resumo operadores logicos no javascript 
+
+            Igualdade:
+                ==  -> Para igualdade de valor 
+                === -> Para igualdade de valor e tipo 
+
+            Maior
+                >  - maior que  
+                >= - maior igual   
+
+            Menor
+                <  - menor que  
+                <= - menor igual 
+            
+            negação/Not:
+                ! (esclamação)
+            
+            Diferente:
+                !=  (! - negação + =)   -> diferente de valor 
+                !== (! - negação + ==)  -> diferente de valor e tipo 
+
+            E/and:
+                &&(e comercial + e comercial)
+
+            OU/Or:
+                ||(pipe + pipe)
+        
+        */ 
+   
+
+
+        //Condições avaliam se alguma preposição é verdadeira e direciona uma ação 
+        const _num1 = 10;
+        const _num2 = 30;
+        const _num3 = 10;
+
+
+
+        //if/else 
+            if (_num1 >= 9){
+                console.log('a variavel _num1 eh maior que ou igual a 9');
+            } else {
+                console.log('a variavel _num1 eh menor que 9');
+            }
+
+        //switch  case
+            const _numDiaSemana = 7;
+            const _nomeDiaSemana = "";
+
+            switch (_numDiaSemana) {
+                case 1:
+                    _nomeDiaSemana = "Domingo";
+                    break;
+
+                case 2:
+                    _nomeDiaSemana = "Segunda-feira";
+                    break;
+
+                case 3:
+                    _nomeDiaSemana = "terça-feira";
+                    break;    
+
+                case 4:
+                    _nomeDiaSemana = "quarta-feira";
+                    break; 
+
+                case 5:
+                    _nomeDiaSemana = "quinta-feira";
+                    break;  
+
+                case 6:
+                    _nomeDiaSemana = "sexta-feira";
+                    break;  
+
+                default:
+                    console.log("sabado");
+     
+            }
+
+            console.log(_nomeDiaSemana);
+
+
+        //switch  case - Exemplo de mesmo resultado para situações diferentes
+            const _fds = false;
+
+            switch (_numDiaSemana) {
+                case 1:
+                case 7:
+                console.log("fds");
+                    break;
+
+                default:
+                console.log("dia util");
+            }
+
+            console.log(_fds);
+
+
+    //--------------------------------------------------------------------------
+    //#06 - Estruturas de repetição
+    //--------------------------------------------------------------------------
+
+        // for -> para verdade faça (avalia antes de fazer...)
+        
+        /*
+            Obs.:
+	        O código abaixo exibirá "O palmares não tem mundial - for index= 0" a 
+            O palmares não tem mundial - for index= 20"
+        */
+
+        // logica: i iniciando = 0, se verdade que i <=20 Faça, e depois incremente +1
+        for (let i=0; i <=20; i++){
+            console.log("O palmares não tem mundial - for index= " + i);
+        }
+
+
+
+        // while -> enquanto verdade faça (avalia antes de fazer...)
+        var _num99 =0;
+
+        while( _num99 <=20){
+            console.log("O palmares não tem mundial - while index= " + _num99);
+            _num99++;
+        }
+
+        // do while -> faça e enquanto verdade continue fazendo (primeiro faz e depois avalia se deve continuar fazendo...)
+        var _num88 =99;
+        
+        do {
+            console.log("O palmares não tem mundial - while index= " + _num88);
+            _num88++;
+        } while( _num88 <=20);
+
+
+        
+    //--------------------------------------------------------------------------
+    //#07 - criando e usando funções nomeadas  
+    //--------------------------------------------------------------------------    
+        
+        /* 
+            função nomeada 01:
+            Declaracao de uma funcao nomeada (o nome dele é: somar)
+            essa função espera receber dois valores e retornar a soma deles
+        */ 
+
+        function somar(x, y){
+            var retorno =0;
+
+            retorno=x+y;
+
+            return retorno;
+        }
+
+        // invocando a função/usando uma funcao 
+        var _resultSoma= somar(4,8);
+
+        //exibindo resultado na console 
+        console.log('Somar com função = '+_resultSoma);
+        
+        
+        /* 
+            função nomeada 02:
+            Declaracao de uma funcao nomeada (o nome dele é: retornarDescrSexo)
+            essa função espera receber dois valores e retornar a soma deles
+        */ 
+        
+        var _sexo='F';
+
+        function retornarDescrSexo(_sexo){
+            switch (_sexo){
+                case 'F':
+                    return 'Feminino';
+
+                case 'M':
+                    return 'Masculino';
+
+                default:
+                    return 'Outros';
+            }
+        }
+
+        console.log('A pessoa é do sexo '+ retornarDescrSexo('M'));
+        
+      
+        // Passando valores padroes para os parametros das funções 
+        function somarAlgo (a=0, b=0){
+
+        console.log( a + b);
+        }
+
+        somarAlgo(1,2);       
+
+
+    //--------------------------------------------------------------------------
+    //#07 - criando e usando funções anonimas(sem nome) = arrow functions 
+    //--------------------------------------------------------------------------
+        const arr =[1, 3, 4, 5, 8, 9];
+    
+        // Exemplo com função anonima(sem nome) 
+        const newArr = arr.map(function(item, index){
+            return item + index;
+        });
+
+        console.log(newArr);
+
+
+        // com arrow function, substitui funções anonimas (sem nome)
+        // quando recebe apenas 1 paramentro
+        const newArr2 = arr.map(item => item * 2);
+        console.log(newArr2);    
+        
+        
+    //--------------------------------------------------------------------------
+    //#08 - trabalhando com arrays  
+    //--------------------------------------------------------------------------      
+        /*
+        -----------------------------------------
+        Tratando array com ES6
+        -----------------------------------------
+        */
+
+        // Usando MAP , permite que eu faça ações com um array e gere um novo com essas
+        // ações implementadas ... no exemplo abaixo, cria-se um novo array com cada item 
+        // do anterior somado ao index, ou seja
+        // para a entrada com o array const arr =[1, 3, 4, 5, 8, 9]; a saida será
+        //  [1, 4, 6, 8, 12, 14]
+        //
+
+        // com arrow function, substitui funções anonimas (sem nome)
+        // quando recebe apenas 1 paramentro
+        const newArr8 = arr.map(item => item * 2);
+
+        console.log(newArr8);
+
+
+
+
+        // Usando reduce - usado para montar uma visão resumida de um array
+        // abaixo será usada para somar todos os elementos do array... percorre todo 
+        // o array somando valor total mais valor do index do array
+        //
+        //Obs.: total inicia em 0
+
+        const somaArr = arr.reduce(function(total, proxValor){
+            return total + proxValor;
+
+        });
+
+        console.log(somaArr);
+
+        // Usando filter - Usado para filtrar algo de um array , é passa uma condição e 
+        // os elementos do array atual que atender (for verdade) serão mantidos no novo 
+        // array e os que não (false) , não serão 
+        //
+
+        const arrayFilter = arr.filter(function(item){
+
+            // condicional para filtragem (nesse caso, seleciona apenas os pares)
+            return item % 2 ===0;
+        });
+
+        // exeibe novo array(filtrado)
+        console.log(arrayFilter);
+
+
+
+        // Usando find - usado pra procurar algo dentro de um array
+        //
+
+        const arrayFind = arr.find(function(item){
+            return item ===4;
+        });
+
+        console.log(arrayFind);     
+
+    
+
+
+
+       
+
+    //--------------------------------------------------------------------------
+    //#70 - Trabalhando com intervalos (timeOut)
+    //--------------------------------------------------------------------------
+
+
+        function exbiralgo(){
+            console.log('TangoDown');
+        }
+
+        function exbiralgo2(){
+            console.log('TangoDown2');
+        }
+
+        // explicacao - o codigo abaixo ira executar a funcao 'exibiralgo' a cada 1 segundo e faz "N" vezes 
+        
+        //setInterval(exbiralgo, 1000);  //> está comentado para não poluir a console 
+
+        // explicacao - o codigo abaixo ira executar a funcao 'exibiralgo' a com um delay de 5 segundos e faz apenas 1 vez 
+        //setTimeout(exbiralgo2, 5000); //> está comentado para não poluir a console 
+
+
+
+
+
+    //--------------------------------------------------------------------------
+    //#80 - fetures legais do ES6 
+    //--------------------------------------------------------------------------
+
+
+        //desestruturação de objetos/array
+        
+        const usuario1 = {
+            nome:'caique1',
+            idade: 25,
+            endereco:{
+                cidade:'Osasco1',
+                estado:'SP'
+            },
+            sexo:'M'
+        }
+
+        const usuario2 = {
+            nome2:'caique2',
+            idade2: 25,
+            endereco2:{
+                cidade2:'Osasco2',
+                estado2:'SP'
+            },
+            sexo:'M'
+        }
+
+
+        // exemplo de como obter os dados do objeto sem desestruturação
+        const nome = usuario1.nome;
+        const cidade = usuario1.endereco.cidade;
+
+        console.log('1 - Meu nome é '+ nome +' e minha cidade é '+ cidade);
+
+        // com destruturação
+        const {nome2, endereco2: {cidade2}} = usuario2;
+
+        console.log('2 - Meu nome é '+ nome2 +' e minha cidade é '+ cidade2);
+
+
+        //#1 - Em arrays 
+        let arr1 = ['John', 'Smith'];
+
+        // destructuring assignment
+        // sets firstName = arr[0]
+        // and surname = arr[1]
+        let [firstName, surname] = arr1;
+
+        alert(firstName); // John
+        alert(surname);  // Smith
+
+
+        /*
+        -----------------------------------------
+        Utilizando template literals
+        -----------------------------------------
+        */
+
+        const nome4 = 'Caique';
+        const idade4 = 25;
+
+        // sem template literal do ES6
+        console.log('Meu nome é ' + nome4 +' e tenho '+ idade4 +' anos.');
+
+        // com template literal do ES6
+        console.log(`Meu nome é ${nome4} e tenho ${idade4} anos.`);
+
+
+
+        /*
+        -----------------------------------------
+        object short syntex 
+        -----------------------------------------
+        */
+
+        // sem o 'object short syntex' do ES6
+
+        const usuario3 = {
+            nome4: nome4,
+            idade4: idade4,
+            empresa: 'Rocketseat'
+
+        };
+
+        console.log(usuario3);
+
+        // com o 'object short syntex' do ES6
+
+        const usuario4 = {
+            nome4,
+            idade4,
+            empresa: 'Rocketseat2'
+
+        };
+
+        console.log(usuario4);
+
+
+    
+
+    //--------------------------------------------------------------------------
+    //#99 - Demais exemplos  funções 
+    //--------------------------------------------------------------------------
+
+        var endereco = {
+            rua: "Rua dos pinheiros",
+            numero: 1293,
+            bairro: "Centro",
+            cidade: "São Paulo",
+            uf: "SP"
+        };
+
+
+        function formatarEndereco(endereco){
+            // é um endereço ?
+            if(endereco){
+                var endeConcatenado = 'O usuario mora em '
+                    + endereco.cidade + ' / '
+                    + endereco.uf + ', no bairro '
+                    + endereco.bairro + ', na rua "'
+                    + endereco.rua + '" com n° '
+                    + endereco.numero + '.';
+                    
+                return endeConcatenado;
+            } else {
+                return 'endereco enviado não é um objeto !';
+            }
+
+        }
+
+
+        function pares(x,y){
+            for(var i=x; i <=y; i++){
+
+                if (i % 2 ==0){
+                    console.log('Esse numero é par -> ' +i);
+                }
+
+            }
+
+        }
+
+
+
+        var skills = ["Javascript", "ReactJS", "React Native"];
+
+        function temHabilidade(skills) {
+            var temSkill=false;
+
+            for(var i=0; i <skills.length; i++){
+                if(skills[i] == 'Javascript'){
+                    temSkill=true;
+                    break;
+                }
+            }
+
+            return temSkill;
+        }
+
+
+        function temHabilidade2(skills) {
+            // jeito mais facil de fazer
+            // Quando usá-se indexOF em um array, ele tenta encontrar em algun dos index o valor 
+            //   especificado, quando não encontra retorno -1, no caso abaixo se retorno for diferente
+            //   de -1, quer dizer que encontrou  
+            return skills.indexOf("Javascript") !== -1;
+        }    
+
+
+
+
+
+        console.log(formatarEndereco(endereco));
+        pares(1, 20);
+
+        if (temHabilidade(skills)) {
+            console.log('tem a skill');
+        } else{
+            console.log('Não tem a skill');
+        }
+
+        if (temHabilidade2(skills)){
+            console.log('Tem skill, forma 02 a melhor hehe !');
+        }
+
+        function exibeHabilidades(usuarios) {
+            for (usuario of usuarios) {
+                        console.log(
+                "O " +
+                    usuario.nome +
+                    " possui as habilidades: " +
+                    usuario.habilidades.join(", ")
+                );
+            }
+        }
+
+        var usuarios = [
+            {
+                nome: "Diego",
+                habilidades: ["Javascript", "ReactJS", "Redux"]
+            },
+            {
+                nome: "Gabriel",
+                habilidades: ["VueJS", "Ruby on Rails", "Elixir"]
+            }
+        ];
+
+        exibeHabilidades(usuarios);
+
+    </script>
+</body>
+</html>

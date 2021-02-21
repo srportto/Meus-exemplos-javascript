@@ -1,0 +1,9 @@
+Tudo que é usado para possibilitar o mini app Todo list
+javascript manipulando os elementos do browser(DOM)
+Interação com os elementos lista(ul), input de texto(input) e botão(button)
+Implementação de persistencia de dados na "localStorage do browser"
+Implementação da recuperação de dados da "localStorage do browser"
+Tem exemplo de tratativa de vazio
+Tem o uso de "for" para percorrer um array
+uso da função push em array
+uso da função splice em array
